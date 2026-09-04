@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야화랩 (YhwaLab) | 여성향 전문 출판사</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf4f8',
+                            100: '#fbe8f2',
+                            500: '#d946ef',
+                            650: '#a21caf',
+                            900: '#701a75',
+                        },
+                        darkBg: '#090210',
+                        cardBg: '#150722'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Pretendard Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .glass-panel {
+            background: rgba(21, 7, 34, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(217, 70, 239, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-brand-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Adjusted Logo Size & Spacing -->
+            <a href="#hero" class="flex items-center space-x-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-brand-900/50 border border-brand-500/30 flex items-center justify-center text-pink-400 group-hover:scale-105 transition shadow-lg shadow-brand-900/40">
+                    <i class="fa-solid fa-feather-pointed text-base"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-bold tracking-wider bg-gradient-to-r from-pink-400 via-purple-300 to-brand-500 bg-clip-text text-transparent leading-tight">야화랩</span>
+                    <span class="text-[10px] tracking-widest font-light text-pink-300/70 uppercase">YHWA LAB</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#hero" class="hover:text-pink-400 transition">홈</a>
+                <a href="#about" class="hover:text-pink-400 transition">출판사 소개</a>
+                <a href="#works" class="hover:text-pink-400 transition">작품 라인업</a>
+                <a href="#submission" class="hover:text-pink-400 transition">원고 투고</a>
+                <a href="#contact" class="hover:text-pink-400 transition">제휴 문의</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#submission" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-600 to-brand-600 text-white text-sm font-medium shadow-lg shadow-pink-900/40 hover:opacity-90 transition">
+                    작가 투고하기
+                </a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-brand-900/40 px-6 py-6 space-y-4">
+            <a href="#hero" class="block text-sm hover:text-pink-400 font-medium mobile-link">홈</a>
+            <a href="#about" class="block text-sm hover:text-pink-400 font-medium mobile-link">출판사 소개</a>
+            <a href="#works" class="block text-sm hover:text-pink-400 font-medium mobile-link">작품 라인업</a>
+            <a href="#submission" class="block text-sm hover:text-pink-400 font-medium mobile-link">원고 투고</a>
+            <a href="#contact" class="block text-sm hover:text-pink-400 font-medium mobile-link">제휴 문의</a>
+            <div class="pt-2">
+                <a href="#submission" class="block w-full text-center py-3 rounded-xl bg-gradient-to-r from-pink-600 to-brand-600 text-white text-sm font-medium mobile-link">
+                    작가 투고하기
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 py-20">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-brand-500/15 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
+                <span class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-900/40 border border-brand-500/30 text-pink-300 text-xs tracking-widest uppercase backdrop-blur-md">
+                    <i class="fa-solid fa-sparkles text-pink-400"></i> <span>Emotional & Fantasy Content Lab</span>
+                </span>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.15]">
+                    달콤하고 매혹적인 서사의 정점,<br>
+                    <span class="bg-gradient-to-r from-pink-400 via-purple-300 to-pink-500 bg-clip-text text-transparent">야화랩 (YhwaLab)</span>
+                </h1>
+
+                <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    독자의 심장을 뛰게 하는 로맨스, 판타지, 그리고 BL까지.<br>
+                    최고의 감성과 몰입감을 선사하는 여성향 전문 콘텐츠 크리에이티브 그룹입니다.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#works" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-pink-600 to-brand-600 text-white font-medium shadow-xl shadow-pink-900/30 hover:opacity-95 transition text-center">
+                        작품 라인업 보기 <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#submission" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-pink-300 font-medium hover:bg-brand-900/30 transition text-center">
+                        원고 투고 안내
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-cardBg/40 border-y border-brand-900/20 px-4 relative">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-pink-400 font-semibold text-sm tracking-widest uppercase">About Yhwalab</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold leading-tight">
+                        세상의 모든 설렘과 서사를<br>가장 아름답게 펼쳐냅니다.
+                    </h2>
+                    <p class="text-gray-300 font-light leading-relaxed">
+                        야화랩은 감각적인 일러스트와 밀도 높은 스토리텔링을 결합하여 독자들에게 깊은 여운을 남기는 여성향 콘텐츠를 제작 및 퍼블리싱하고 있습니다. 웹소설부터 단행본, 웹툰에 이르기까지 IP의 가치를 극대화하는 파트너입니다.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6 pt-4 border-t border-brand-900/40">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-pink-400">50+</div>
+                            <div class="text-xs text-gray-400 mt-1">누적 계약 작품</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-pink-400">30+</div>
+                            <div class="text-xs text-gray-400 mt-1">전속/제휴 작가</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-pink-400">100M+</div>
+                            <div class="text-xs text-gray-400 mt-1">총 누적 조회수</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden glass-panel p-8 sm:p-10 flex flex-col justify-center min-h-[340px] shadow-2xl">
+                    <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-500/10 rounded-full blur-2xl"></div>
+                    <i class="fa-solid fa-feather-pointed text-4xl text-pink-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">창작자와의 동반 성장</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        야화랩은 작가님의 상상력이 최고의 작품으로 탄생할 수 있도록 전문적인 편집, 맞춤형 마케팅, 그리고 투명한 정산 시스템을 약속드립니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works" class="py-24 px-4 max-w-7xl mx-auto">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-pink-400 font-semibold text-sm tracking-widest uppercase">Works Lineup</span>
+                <h2 class="text-3xl sm:text-4xl font-bold">야화랩 대표 작품</h2>
+                <p class="text-gray-400 text-sm max-w-lg mx-auto">독보적인 세계관과 매력적인 캐릭터들이 살아 숨 쉬는 야화랩의 대표작들을 만나보세요.</p>
+                
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 pt-6">
+                    <button onclick="filterWorks('all')" class="work-tab px-5 py-2.5 rounded-full text-xs font-medium bg-brand-600 text-white transition shadow-md shadow-brand-900/50">전체</button>
+                    <button onclick="filterWorks('romance')" class="work-tab px-5 py-2.5 rounded-full text-xs font-medium glass-panel text-gray-300 hover:bg-brand-900/30 transition">로맨스</button>
+                    <button onclick="filterWorks('fantasy')" class="work-tab px-5 py-2.5 rounded-full text-xs font-medium glass-panel text-gray-300 hover:bg-brand-900/30 transition">로판</button>
+                    <button onclick="filterWorks('bl')" class="work-tab px-5 py-2.5 rounded-full text-xs font-medium glass-panel text-gray-300 hover:bg-brand-900/30 transition">BL</button>
+                </div>
+            </div>
+
+            <!-- Works Grid -->
+            <div id="works-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Work 1 -->
+                <div class="work-card glass-panel rounded-2xl overflow-hidden group hover:border-brand-500/50 transition duration-300 shadow-xl flex flex-col cursor-pointer" data-category="fantasy" onclick="openWorkModal('폐후의 은밀한 계약', '로판', '로아린', '네이버 시리즈', '차가운 황제의 가짜 황후가 된 그녀, 복수의 끝에서 마주한 치명적인 사랑 이야기.', '차가운 북부 공국의 황제와 계약 결혼을 맺은 전직 황후. 권력의 암투 속에서 피어나는 아슬아슬한 감정과 숨겨진 비밀을 파헤치는 정통 판타지 로맨스 대작.')">
+                    <div class="h-60 bg-gradient-to-tr from-purple-900/60 to-pink-900/40 relative flex items-center justify-center p-6 overflow-hidden">
+                        <div class="absolute inset-0 bg-black/30 group-hover:scale-105 transition duration-500"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-md bg-brand-600/90 text-white text-xs font-semibold">로판</span>
+                        <h3 class="text-xl font-extrabold text-white relative z-10 text-center tracking-wide">폐후의 은밀한 계약</h3>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                        <div>
+                            <p class="text-xs text-pink-400 font-medium mb-1">작가 | 로아린</p>
+                            <p class="text-sm text-gray-300 font-light line-clamp-2">차가운 황제의 가짜 황후가 된 그녀, 복수의 끝에서 마주한 치명적인 사랑 이야기.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-900/40 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">연재처 | 네이버 시리즈</span>
+                            <span class="text-xs text-pink-400 font-medium hover:underline flex items-center space-x-1">
+                                <span>상세보기</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work 2 -->
+                <div class="work-card glass-panel rounded-2xl overflow-hidden group hover:border-brand-500/50 transition duration-300 shadow-xl flex flex-col cursor-pointer" data-category="romance" onclick="openWorkModal('대표님과 시크릿 오피스', '로맨스', '한여름', '리디북스', '완벽주의 직진 본부장과 아슬아슬 숨겨야만 하는 사내 비밀 연애 로맨스.', '철두철미한 대기업 본부장 시우와 비밀을 간직한 기획팀 대리 혜린의 달콤살벌한 오피스 로맨스. 단 한 순간도 눈을 뗄 수 없는 아슬아슬한 케미스트리!')">
+                    <div class="h-60 bg-gradient-to-tr from-pink-900/60 to-red-900/40 relative flex items-center justify-center p-6 overflow-hidden">
+                        <div class="absolute inset-0 bg-black/30 group-hover:scale-105 transition duration-500"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-md bg-pink-600/90 text-white text-xs font-semibold">로맨스</span>
+                        <h3 class="text-xl font-extrabold text-white relative z-10 text-center tracking-wide">대표님과 시크릿 오피스</h3>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                        <div>
+                            <p class="text-xs text-pink-400 font-medium mb-1">작가 | 한여름</p>
+                            <p class="text-sm text-gray-300 font-light line-clamp-2">완벽주의 직진 본부장과 아슬아슬 숨겨야만 하는 사내 비밀 연애 로맨스.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-900/40 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">연재처 | 리디북스</span>
+                            <span class="text-xs text-pink-400 font-medium hover:underline flex items-center space-x-1">
+                                <span>상세보기</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work 3 -->
+                <div class="work-card glass-panel rounded-2xl overflow-hidden group hover:border-brand-500/50 transition duration-300 shadow-xl flex flex-col cursor-pointer" data-category="bl" onclick="openWorkModal('섀도우 아르카나', 'BL', '벨리나', '카카오페이지', '마법사의 탑에서 벌어지는 거부할 수 없는 운명과 집착의 판타지 BL.', '금단의 마법을 연구하는 대마법사와 그의 제자가 된 의문의 의뢰인. 그림자 속에 감춰진 거대한 음모와 거부할 수 없는 구원의 판타지 BL 소설.')">
+                    <div class="h-60 bg-gradient-to-tr from-indigo-900/60 to-purple-900/40 relative flex items-center justify-center p-6 overflow-hidden">
+                        <div class="absolute inset-0 bg-black/30 group-hover:scale-105 transition duration-500"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-md bg-purple-600/90 text-white text-xs font-semibold">BL</span>
+                        <h3 class="text-xl font-extrabold text-white relative z-10 text-center tracking-wide">섀도우 아르카나</h3>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                        <div>
+                            <p class="text-xs text-pink-400 font-medium mb-1">작가 | 벨리나</p>
+                            <p class="text-sm text-gray-300 font-light line-clamp-2">마법사의 탑에서 벌어지는 거부할 수 없는 운명과 집착의 판타지 BL.</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-900/40 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">연재처 | 카카오페이지</span>
+                            <span class="text-xs text-pink-400 font-medium hover:underline flex items-center space-x-1">
+                                <span>상세보기</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submission Section -->
+        <section id="submission" class="py-24 bg-cardBg/40 border-t border-brand-900/20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center space-y-4 mb-12">
+                    <span class="text-pink-400 font-semibold text-sm tracking-widest uppercase">Author Submission</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold">신작 원고 투고 안내</h2>
+                    <p class="text-gray-300 text-sm max-w-xl mx-auto font-light">
+                        야화랩과 함께 독자들에게 사랑받는 명작을 만들 작가님들을 기다립니다. 장르 및 분량 제한 없이 자유롭게 투고해 주세요.
+                    </p>
+                </div>
+
+                <div class="glass-panel rounded-3xl p-8 sm:p-12 shadow-2xl space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                        <div class="p-5 rounded-xl bg-darkBg/60 border border-brand-900/40">
+                            <div class="text-pink-400 font-bold mb-1">01. 접수 방법</div>
+                            <p class="text-xs text-gray-300">이메일 접수 (submission@yhwalab.com)</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-darkBg/60 border border-brand-900/40">
+                            <div class="text-pink-400 font-bold mb-1">02. 제출 서류</div>
+                            <p class="text-xs text-gray-300">시놉시스 및 캐릭터 소개, 본문 3화 이상</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-darkBg/60 border border-brand-900/40">
+                            <div class="text-pink-400 font-bold mb-1">03. 검토 기간</div>
+                            <p class="text-xs text-gray-300">접수일로부터 영업일 기준 2주 이내 개별 회신</p>
+                        </div>
+                    </div>
+
+                    <form id="submission-form" onsubmit="handleSubmission(event)" class="space-y-6 pt-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">작가명 (필수)</label>
+                                <input type="text" id="sub-name" required class="w-full bg-darkBg border border-brand-900/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition" placeholder="필명 또는 본명">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">이메일 (필수)</label>
+                                <input type="email" id="sub-email" required class="w-full bg-darkBg border border-brand-900/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition" placeholder="contact@example.com">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">작품 제목 및 장르</label>
+                                <input type="text" id="sub-title" required class="w-full bg-darkBg border border-brand-900/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition" placeholder="예: 작품명 / 로판">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">원고 링크 또는 파일 첨부 안내</label>
+                                <input type="text" id="sub-link" required class="w-full bg-darkBg border border-brand-900/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition" placeholder="구글 드라이브 링크 등">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">간단한 기획 의도 및 줄거리</label>
+                            <textarea id="sub-desc" rows="4" required class="w-full bg-darkBg border border-brand-900/60 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-brand-500 transition resize-none" placeholder="작품의 매력 포인트와 시놉시스를 요약해 주세요."></textarea>
+                        </div>
+
+                        <div class="text-center pt-2">
+                            <button type="submit" class="px-8 py-4 rounded-xl bg-gradient-to-r from-pink-600 to-brand-600 text-white font-medium shadow-lg shadow-pink-900/30 hover:opacity-95 transition w-full sm:w-auto">
+                                원고 투고 지원하기
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4 max-w-4xl mx-auto text-center space-y-6">
+            <span class="text-pink-400 font-semibold text-sm tracking-widest uppercase">Contact Us</span>
+            <h2 class="text-3xl font-bold">비즈니스 및 제휴 문의</h2>
+            <p class="text-gray-400 text-sm max-w-lg mx-auto">
+                출판권 제휴, 미디어믹스(웹툰/영상화) 판권 문의 등은 아래 이메일로 편하게 연락 주시기 바랍니다.
+            </p>
+            <div class="inline-flex items-center space-x-3 px-6 py-3 rounded-xl glass-panel text-pink-300 text-sm font-medium">
+                <i class="fa-solid fa-envelope"></i>
+                <span>business@yhwalab.com</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Work Detail Modal -->
+    <div id="work-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 space-y-6 relative border border-brand-500/40 shadow-2xl animate-in fade-in zoom-in duration-200">
+            <button onclick="closeWorkModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="space-y-2">
+                <span id="modal-category" class="px-3 py-1 rounded-md bg-brand-600 text-white text-xs font-semibold">장르</span>
+                <h3 id="modal-title" class="text-2xl font-bold text-white pt-2">작품 제목</h3>
+                <p id="modal-author" class="text-xs text-pink-400 font-medium">작가명</p>
+            </div>
+            <div class="space-y-2 pt-2 border-t border-brand-900/40">
+                <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">플랫폼 연재처</p>
+                <p id="modal-platform" class="text-sm text-pink-300 font-semibold">네이버 시리즈</p>
+            </div>
+            <div class="space-y-2">
+                <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">상세 시놉시스</p>
+                <p id="modal-synopsis" class="text-sm text-gray-300 leading-relaxed font-light">줄거리 내용...</p>
+            </div>
+            <div class="pt-4 flex justify-end">
+                <button onclick="closeWorkModal()" class="px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-medium hover:bg-brand-500 transition">
+                    확인
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Box (No alert()) -->
+    <div id="notification-box" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 max-w-sm glass-panel p-4 rounded-2xl border border-pink-500/40 shadow-2xl flex items-center space-x-3">
+        <div class="text-pink-400 text-lg"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <div class="text-xs font-bold text-white">알림</div>
+            <div id="notification-msg" class="text-xs text-gray-300 mt-0.5">메시지 내용</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg border-t border-brand-900/40 py-12 px-4 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="text-lg font-bold text-white tracking-wider">야화랩 (YHWA LAB)</div>
+                <p>서울특별시 마포구 월드컵로 여성향빌딩 7층 | 사업자등록번호: 123-45-67890</p>
+                <p>대표 이사: 김야화 | 통신판매업신고: 제 2026-서울마포-0000호</p>
+            </div>
+            <div class="flex space-x-4 text-lg">
+                <a href="#" class="hover:text-pink-400 transition"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="hover:text-pink-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-pink-400 transition"><i class="fa-brands fa-blog"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-brand-900/20 text-center text-gray-500">
+            &copy; 2026 YHWA LAB Corp. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Works Filtering Logic
+        function filterWorks(category) {
+            const cards = document.querySelectorAll('.work-card');
+            const tabs = document.querySelectorAll('.work-tab');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-900/50');
+                tab.classList.add('glass-panel', 'text-gray-300');
+            });
+            event.target.classList.remove('glass-panel', 'text-gray-300');
+            event.target.classList.add('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-900/50');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Logic
+        function openWorkModal(title, category, author, platform, shortDesc, fullDesc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-author').innerText = '작가 | ' + author;
+            document.getElementById('modal-platform').innerText = platform;
+            document.getElementById('modal-synopsis').innerText = fullDesc;
+            document.getElementById('work-modal').classList.remove('hidden');
+        }
+
+        function closeWorkModal() {
+            document.getElementById('work-modal').classList.add('hidden');
+        }
+
+        // Notification Box (Replacing alert)
+        function showNotification(message) {
+            const box = document.getElementById('notification-box');
+            const msg = document.getElementById('notification-msg');
+            msg.innerText = message;
+            box.classList.remove('translate-y-32', 'opacity-0');
+            box.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                box.classList.remove('translate-y-0', 'opacity-100');
+                box.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        // Submission Handling
+        function handleSubmission(e) {
+            e.preventDefault();
+            const name = document.getElementById('sub-name').value;
+            showNotification(name + ' 작가님의 원고 투고가 성공적으로 접수되었습니다!');
+            document.getElementById('submission-form').reset();
+        }
+    </script>
+</body>
+</html>
