@@ -3,9 +3,9 @@
 > 여성향 웹소설 전문 콘텐츠 레이블. BL을 중심으로 로맨스·로맨스 판타지·GL 웹소설을 기획·편집·출간합니다. BL 전문 서브레이블은 트루비(TRUE B)입니다. 웹소설 전문 EPUB2 제작과 B2B 홍보 홈페이지 제작 서비스도 제공합니다.
 
 ## 주요 페이지
-- [Publishing](https://yahwalab26.github.io/yahwalab/): 출간작, 트루비 레이블, 편집 품질관리, 투고 안내(FAQ)
-- [EPUB2 제작](https://yahwalab26.github.io/yahwalab/epub2/): 웹소설 전문 EPUB2 제작(B2B)과 임프린트 등록 출간
-- [홈페이지 제작](https://yahwalab26.github.io/yahwalab/web-production/): 웹소설 전문 B2B 홍보 홈페이지 제작
+- [Publishing](https://yahwalab.xyz/): 출간작, 트루비 레이블, 편집 품질관리, 투고 안내(FAQ)
+- [EPUB2 제작](https://yahwalab.xyz/epub2/): 웹소설 전문 EPUB2 제작(B2B)과 임프린트 등록 출간
+- [홈페이지 제작](https://yahwalab.xyz/web-production/): 웹소설 전문 B2B 홍보 홈페이지 제작
 
 ## 출간작 (모두 BL, 트루비)
 - [밍키 주니어](https://blog.naver.com/yahwalab/224430288531): 자급제B
