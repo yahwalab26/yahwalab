@@ -44,4 +44,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://yahwalab26.github.io/yahwalab/sitemap.xml
+Sitemap: https://yahwalab.xyz/sitemap.xml
