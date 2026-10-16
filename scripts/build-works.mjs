@@ -2,12 +2,12 @@
 /**
  * build-works.mjs — 정산 사이트(Supabase)의 공개 출간작을 홈페이지 index.html에 반영합니다.
  *
- *  - 데이터: public.public_works 뷰 (서버 키로만 읽힘)
+ *  - 데이터: Supabase Edge Function `works-feed` (공개 출간작만 돌려주는 읽기 전용 창구, 전용 토큰으로 보호)
  *  - 바꾸는 곳: index.html 의 출간작 카드(WORKS 마커 사이) + JSON-LD 의 "야화랩 출간작" 목록
  *  - 표지: covers 버킷의 파일을 assets/img/ 에 같은 이름으로 내려받음
  *
  * 사용법
- *   (실서버)  SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… node scripts/build-works.mjs
+ *   (실서버)  SUPABASE_URL=… WORKS_FEED_TOKEN=… node scripts/build-works.mjs
  *   (점검용)  node scripts/build-works.mjs --json works.json --no-download [--root 폴더] [--dry]
  */
 import fs from 'node:fs/promises';
@@ -28,10 +28,10 @@ const exists = p => fs.access(p).then(() => true, () => false);
 async function fetchRows() {
   const f = opt('--json');
   if (f) return JSON.parse(await fs.readFile(f, 'utf8'));
-  const url = process.env.SUPABASE_URL, key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) die('SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY 환경변수가 필요합니다.');
-  const r = await fetch(`${url}/rest/v1/public_works?select=*`, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
-  if (!r.ok) die(`출간작 조회 실패 (${r.status}) ${await r.text()}`);
+  const url = process.env.SUPABASE_URL, tok = process.env.WORKS_FEED_TOKEN;
+  if (!url || !tok) die('SUPABASE_URL, WORKS_FEED_TOKEN 환경변수가 필요합니다.');
+  const r = await fetch(`${url}/functions/v1/works-feed`, { headers: { 'x-feed-token': tok } });
+  if (!r.ok) die(`출간작 조회 실패 (${r.status}) ${(await r.text()).slice(0, 200)}`);
   return r.json();
 }
 function normalize(rows) {
