@@ -4,12 +4,16 @@
 
 ## 출간작
 <!--WORKS:START-->
+- [상무님의 오피스 파트너](https://blog.naver.com/yahwalab/224443402299): 마요마요참지마요 작 · BL 웹소설 · 트루비 출간
+- [밍키 주니어](https://blog.naver.com/yahwalab/224430288531): 자급제B 작 · BL 웹소설 · 트루비 출간
+- [러스트 크리스마스[개정판]](https://blog.naver.com/yahwalab/224434441423): 마요마요참지마요 작 · BL 웹소설 · 트루비 출간
+- [너에게로 이어진다[개정판]](https://blog.naver.com/yahwalab/224434438425): 마요마요참지마요 작 · BL 웹소설 · 트루비 출간
 <!--WORKS:END-->
 
 ## 투고 안내
 - 투고 장르: 로맨스, 로맨스 판타지, BL, GL
 - 현재 접수 분량: 공백 미포함 1만 자 이상의 19금 초단편, 10만 자 안팎의 단편
-- 제출물: 완결고와 자유 양식의 시놉시스를 yahwalab@naver.com 으로 발송
+- 제출물: 완결고와 자유 양식의 시놉시스를 editor@yahwalab.xyz 로 발송
 - 투고 결과는 합격 여부와 관계없이 회신
 
 ## 서비스
@@ -17,6 +21,7 @@
 - [홈페이지 제작](https://yahwalab.xyz/web-production/): B2B 홍보 홈페이지 제작
 
 ## 연락처
-- 이메일: yahwalab@naver.com
+- 이메일(일반·제작 문의): admin@yahwalab.xyz
+- 이메일(투고): editor@yahwalab.xyz
 - X: https://x.com/yahwalab
 - 블로그: https://blog.naver.com/yahwalab

@@ -1,4 +1,33 @@
 User-agent: *
 Allow: /
 
+# 한국 검색엔진
+User-agent: Yeti
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+# AI 검색·답변 엔진 (AEO): 명시적으로 허용
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://yahwalab.xyz/sitemap.xml
