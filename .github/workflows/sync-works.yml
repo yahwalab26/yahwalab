@@ -1,4 +1,4 @@
-# 정산 사이트에서 등록한 출간작을 홈페이지(index.html · assets/img)에 반영합니다.
+# 정산 사이트에서 등록한 출간작을 홈페이지(index.html · llms.txt · sitemap.xml · assets/img)에 반영합니다.
 # 실행 시점: ① 수동(Actions 탭 → Run workflow)  ② 정산 사이트에서 저장 시 자동 호출(다음 단계)  ③ 매일 한 번 안전망
 name: sync-works
 
@@ -33,10 +33,10 @@ jobs:
 
       - name: 바뀐 게 있으면 커밋
         run: |
-          if [ -n "$(git status --porcelain index.html assets/img)" ]; then
+          if [ -n "$(git status --porcelain index.html llms.txt sitemap.xml assets/img)" ]; then
             git config user.name "yahwalab-bot"
             git config user.email "yahwalab-bot@users.noreply.github.com"
-            git add index.html assets/img
+            git add index.html llms.txt sitemap.xml assets/img
             git commit -m "출간작 자동 반영"
             git push
           else
