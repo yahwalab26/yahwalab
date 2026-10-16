@@ -4,6 +4,7 @@
  *
  *  - 데이터: Supabase Edge Function `works-feed` (공개 출간작만 돌려주는 읽기 전용 창구, 전용 토큰으로 보호)
  *  - 바꾸는 곳: index.html 의 출간작 카드(WORKS 마커 사이) + JSON-LD 의 "야화랩 출간작" 목록
+ *               + llms.txt 의 출간작 목록(AI 검색용) + sitemap.xml 홈 주소의 lastmod
  *  - 표지: covers 버킷의 파일을 assets/img/ 에 같은 이름으로 내려받음
  *
  * 사용법
@@ -17,6 +18,8 @@ const args = process.argv.slice(2);
 const opt = k => { const i = args.indexOf(k); return i < 0 ? null : (args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : true); };
 const ROOT = path.resolve(opt('--root') || '.');
 const HTML = path.join(ROOT, 'index.html');
+const LLMS = path.join(ROOT, 'llms.txt');
+const SITEMAP = path.join(ROOT, 'sitemap.xml');
 const IMG = path.join(ROOT, 'assets', 'img');
 const die = m => { console.error('✗ ' + m); process.exit(1); };
 
@@ -115,3 +118,20 @@ const before = await fs.readFile(HTML, 'utf8'), after = build(before, rows);
 if (after === before) console.log('변경 없음');
 else if (opt('--dry')) console.log('(dry) index.html 이 바뀔 예정입니다.');
 else { await fs.writeFile(HTML, after, 'utf8'); console.log('index.html 갱신'); }
+
+/* ---------- 4) llms.txt (AI 검색용 요약) · sitemap.xml (갱신 날짜) ---------- */
+const llmsLine = r => `- [${r.title}](${r.blog_url}): ${r.pen_names} 작 · ${r.genre} 웹소설 · ${r.label || '야화랩'} 출간`;
+if (await exists(LLMS)) {
+  const l0 = await fs.readFile(LLMS, 'utf8');
+  if (l0.includes('<!--WORKS:START-->') && l0.includes('<!--WORKS:END-->')) {
+    const l1 = between(l0, '<!--WORKS:START-->', '<!--WORKS:END-->', '\n' + rows.map(llmsLine).join('\n') + '\n');
+    if (l1 !== l0 && !opt('--dry')) { await fs.writeFile(LLMS, l1, 'utf8'); console.log('llms.txt 갱신'); }
+  }
+}
+/* 출간작이 실제로 바뀐 날에만 홈 주소의 lastmod 를 오늘(한국 시간)로 갱신 */
+if (after !== before && !opt('--dry') && await exists(SITEMAP)) {
+  const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const m0 = await fs.readFile(SITEMAP, 'utf8');
+  const m1 = m0.replace(/(<loc>https:\/\/yahwalab\.xyz\/<\/loc><lastmod>)[^<]*(<\/lastmod>)/, `$1${today}$2`);
+  if (m1 !== m0) { await fs.writeFile(SITEMAP, m1, 'utf8'); console.log('sitemap.xml 갱신'); }
+}
