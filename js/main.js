@@ -1,11 +1,12 @@
 (function(){
   var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
   /* 문의 버튼·이메일 복사·출간작 클릭 익명 집계: 날짜·이벤트·페이지(출간작은 제목)만 보냄. 개인정보·IP·쿠키 없음, 실패해도 화면 동작에는 영향 없음.
-     본인 방문 제외: 주소 끝에 ?notrack 을 붙여 한 번 접속하면 그 브라우저는 집계하지 않음 */
+     본인 방문 제외: 정산 사이트에 관리자로 로그인한 브라우저는 자동 제외(쿠키 yw_nt), 예비로 주소 끝에 ?notrack 을 붙여 접속해도 제외 */
   var TK={u:'https://wddixxdrndgvjgicwunu.supabase.co',k:'sb_publishable_fIrxIqOmX_-BFpSELdmvXQ_kkYSkaCx'};
   try{if(/[?&]notrack\b/.test(location.search))localStorage.setItem('yw_nt','1')}catch(e){}
   function track(ev,label){try{
-    if(localStorage.getItem('yw_nt')==='1')return;
+    var nt=false;try{nt=localStorage.getItem('yw_nt')==='1'}catch(x){}
+    if(nt||/(^|;\s*)yw_nt=1/.test(document.cookie))return; /* 정산 사이트에 관리자로 로그인한 브라우저는 쿠키로 자동 제외 */
     var pg=location.pathname.replace(/index\.html$/,'');if(pg.slice(-1)!=='/')pg+='/';
     fetch(TK.u+'/rest/v1/rpc/log_site_event',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json',apikey:TK.k},body:JSON.stringify({p_event:ev,p_page:pg,p_label:label||''})}).catch(function(){});
   }catch(e){}}
