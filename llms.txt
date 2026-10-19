@@ -1,27 +1,22 @@
-# 야화랩 (YAHWA LAB)
+# 야화랩 YAHWA LAB
 
-> 야화랩은 BL을 중심으로 로맨스·로맨스 판타지·GL 웹소설을 기획·편집·출간하는 여성향 웹소설 전문 콘텐츠 레이블입니다. BL 작품은 서브레이블 트루비(TRUE B)로 출간합니다. 웹소설 전문 EPUB2 제작과 B2B 홍보 홈페이지 제작도 제공합니다.
+> 야화랩은 BL을 중심으로 로맨스·로맨스 판타지·GL 웹소설을 기획·편집·출간하는 여성향 웹소설 전문 콘텐츠 레이블입니다. BL 작품은 서브레이블 트루비(TRUE B)로 출간됩니다.
 
-## 출간작
-<!--WORKS:START-->
-- [상무님의 오피스 파트너](https://blog.naver.com/yahwalab/224443402299): 마요마요참지마요 작 · BL 웹소설 · 트루비 출간
-- [밍키 주니어](https://blog.naver.com/yahwalab/224430288531): 자급제B 작 · BL 웹소설 · 트루비 출간
-- [러스트 크리스마스[개정판]](https://blog.naver.com/yahwalab/224434441423): 마요마요참지마요 작 · BL 웹소설 · 트루비 출간
-- [너에게로 이어진다[개정판]](https://blog.naver.com/yahwalab/224434438425): 마요마요참지마요 작 · BL 웹소설 · 트루비 출간
-<!--WORKS:END-->
+## 기본 정보
+- 공식 사이트: https://yahwalab.xyz/
+- 공식 블로그: https://blog.naver.com/yahwalab
+- 공식 X(트위터): https://x.com/yahwalab
+- 투고 문의: editor@yahwalab.xyz
+- 일반 문의: admin@yahwalab.xyz
+
+## 출간·유통
+- 직계약 유통처: 리디북스, 교보문고, 알라딘, YES24, 북큐브 (유통사는 단계적으로 추가 중)
 
 ## 투고 안내
-- 투고 장르: 로맨스, 로맨스 판타지, BL, GL
-- 현재 접수 분량: 공백 미포함 1만 자 이상의 19금 초단편, 10만 자 안팎의 단편
-- 제출물: 완결고와 자유 양식의 시놉시스를 editor@yahwalab.xyz 로 발송
-- 투고 결과는 합격 여부와 관계없이 회신
+- 장르: 로맨스, 로맨스 판타지, BL, GL
+- 접수 범위: 현재 공백 미포함 1만 자 이상의 19금 초단편 및 10만 자 안팎의 단편
+- 제출물: 완결고 + 자유 양식 시놉시스를 editor@yahwalab.xyz로 발송
+- 결과는 합격 여부와 관계없이 회신
 
 ## 서비스
-- [EPUB2 제작](https://yahwalab.xyz/epub2/): 웹소설 전문 EPUB2 제작. 제작을 의뢰한 작품은 야화랩 임프린트로 등록해 정식 출간까지 이어갈 수 있음
-- [홈페이지 제작](https://yahwalab.xyz/web-production/): B2B 홍보 홈페이지 제작
-
-## 연락처
-- 이메일(일반·제작 문의): admin@yahwalab.xyz
-- 이메일(투고): editor@yahwalab.xyz
-- X: https://x.com/yahwalab
-- 블로그: https://blog.naver.com/yahwalab
+- Business 서비스는 준비 중입니다.

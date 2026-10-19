@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yahwalab.xyz/</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://yahwalab.xyz/epub2/</loc><lastmod>2026-10-16</lastmod><priority>0.7</priority></url>
-  <url><loc>https://yahwalab.xyz/web-production/</loc><lastmod>2026-10-16</lastmod><priority>0.7</priority></url>
+  <url>
+    <loc>https://yahwalab.xyz/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
