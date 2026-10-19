@@ -126,11 +126,11 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
   h1,h2,.hero h1,.imp h2,.mb h2,.nf h1{line-height:1.5em}
   .sub .box{border:1px solid var(--hl)}
   .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-  /* 헤더: 로고 중앙 + 3분할 탭바 (모바일에서는 화면을 덜 가리도록 고정하지 않음) */
+  /* 헤더: 로고 중앙 + 균등 분할 탭바 (모바일에서는 화면을 덜 가리도록 고정하지 않음) */
   header{position:static}
   header .wrap{gap:10px;padding-top:16px;padding-bottom:0}
   header img{height:32px}
-  nav{justify-content:stretch;display:grid;grid-template-columns:repeat(3,1fr);gap:0;width:100%;border-top:1px solid var(--hl)}
+  nav{justify-content:stretch;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:0;width:100%;border-top:1px solid var(--hl)}
   nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;padding:8px 2px;font-size:12px;line-height:1.3;text-align:center;white-space:nowrap}
   nav a sup{display:block;margin:0 0 3px;font-size:9px}
   nav a::after{height:2px}
@@ -161,6 +161,3 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
   .m4{padding:0 12px}.m4 .hd{gap:10px}.m4 .hd span:nth-last-child(-n+2){display:none}.m4 .bn{padding:12px 14px}.m4 .bn h5{font-size:15px}.m4 .bn i{width:46px;height:64px}.m4 .bk5{grid-template-columns:repeat(4,1fr);gap:6px}.m4 .bk5>div:nth-child(5){display:none}
   .m3 h5{font-size:52px}.m3 .nv{gap:12px;padding:6px 14px}.m3 .gl{width:90%}
 }
-
-/* 표지·로고 이미지 보호(억제용): 끌어가기·길게 누르기·이미지 주소 복사 메뉴가 표지에서 뜨지 않게 함 */
-.works .cvi,.sub .box img{-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;pointer-events:none}
