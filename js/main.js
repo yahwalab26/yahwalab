@@ -29,3 +29,22 @@
     function fb(){var r=document.createRange();r.selectNode($('#addr'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(x){b.textContent='직접 선택해 복사해 주세요'}}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,fb)}else fb()});
 })();
+
+/* hero slider */
+(function(){var h=document.getElementById('hs');if(!h)return;
+  var S=h.querySelectorAll('.hs-s'),D=h.querySelectorAll('.hs-d'),L=document.getElementById('hsl'),N=document.getElementById('hsn'),P=document.getElementById('hsp'),i=0,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function go(n){i=(n+S.length)%S.length;
+    S.forEach(function(s,k){var on=k===i;s.classList.toggle('on',on);s.setAttribute('aria-hidden',on?'false':'true');if(on)s.removeAttribute('inert');else s.setAttribute('inert','')});
+    D.forEach(function(d,k){d.classList.remove('on');d.setAttribute('aria-current',k===i?'true':'false')});void h.offsetWidth;D[i].classList.add('on');
+    L.textContent=S[i].dataset.lb;N.textContent='0'+(i+1)+' / 0'+S.length}
+  D.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
+  document.getElementById('hsf').addEventListener('click',function(){go(i+1)});document.getElementById('hsb').addEventListener('click',function(){go(i-1)});
+  P.addEventListener('click',function(){var p=h.classList.toggle('pz');P.setAttribute('aria-pressed',p);P.textContent=p?'▶':'Ⅱ';P.setAttribute('aria-label',p?'자동 넘김 재생':'자동 넘김 멈춤')});
+  D.forEach(function(d){d.querySelector('i').addEventListener('animationend',function(){if(d.classList.contains('on'))go(i+1)})});
+  h.addEventListener('mouseenter',function(){h.classList.add('ho')});h.addEventListener('mouseleave',function(){h.classList.remove('ho')});
+  h.addEventListener('focusin',function(){h.classList.add('ho')});h.addEventListener('focusout',function(){h.classList.remove('ho')});
+  var v=document.getElementById('hsv'),x0=null,y0=0;
+  v.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+  v.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5)go(i+(dx<0?1:-1))},{passive:true});
+  go(0);if(rm){h.classList.add('pz');P.setAttribute('aria-pressed','true');P.textContent='▶'}
+})();
