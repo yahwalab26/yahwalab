@@ -6,8 +6,8 @@
 - 공식 사이트: https://yahwalab.xyz/
 - 공식 블로그: https://blog.naver.com/yahwalab
 - 공식 X(트위터): https://x.com/yahwalab
-- 투고 문의: editor@yahwalab.xyz
-- 일반 문의: admin@yahwalab.xyz
+- 투고 문의: sample@yahwalab.xyz
+- 일반 문의: sample@yahwalab.xyz
 
 ## 출간·유통
 - 직계약 유통처: 리디북스, 교보문고, 알라딘, YES24, 북큐브 (유통사는 단계적으로 추가 중)
@@ -15,7 +15,7 @@
 ## 투고 안내
 - 장르: 로맨스, 로맨스 판타지, BL, GL
 - 접수 범위: 현재 공백 미포함 1만 자 이상의 19금 초단편 및 10만 자 안팎의 단편
-- 제출물: 완결고 + 자유 양식 시놉시스를 editor@yahwalab.xyz로 발송
+- 제출물: 완결고 + 자유 양식 시놉시스를 sample@yahwalab.xyz로 발송
 - 결과는 합격 여부와 관계없이 회신
 
 ## 서비스
