@@ -38,40 +38,7 @@
       rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches,DUR=rm?10000:7600;
   S.forEach(function(s,k){if(k){s.setAttribute('inert','');s.setAttribute('aria-hidden','true')}});
 
-  /* 슬라이드 1: 출간작 표지 팬 — 출간작 목록의 표지를 그대로 가져와 자동 갱신됨 */
-  var fan=document.getElementById('fan'),imgs=[].slice.call(document.querySelectorAll('#wl img.cvi')).slice(0,4);
-  if(fan&&imgs.length){var c=imgs.length,R=[-9,-3,3,9],TY=[2,-5,-5,2],K=[-16,-7,9,18];
-    imgs.forEach(function(im,n){var f=document.createElement('div');f.className='fc';
-      var m=c===1?1.5:n*(3/(c-1));
-      f.style.cssText='left:'+(c===1?32:6+n*(59/(c-1))).toFixed(1)+'%;--n:'+n+';--r:'+R[Math.round(m)]+'deg;--ty:'+TY[Math.round(m)]+'%;--k:'+K[Math.round(m)];
-      var s=document.createElement('span');s.className='fi';s.style.setProperty('--n',n);
-      var g=document.createElement('img');g.src=im.getAttribute('src');g.alt='';g.width=520;g.height=780;g.decoding='async';
-      s.appendChild(g);f.appendChild(s);fan.appendChild(f)})}
-  else if(fan)fan.style.display='none';
-
-  /* 슬라이드 2: 유통처 허브 — 선이 알약을 따라다니고, 커서에 살짝 끌려옴 */
-  var hub=document.getElementById('hub'),svg=document.getElementById('hbl'),NS='http://www.w3.org/2000/svg',pills=[],lines=[],hubC=null,hubOn=false,hraf=0,ptr={x:-999,y:-999,in:false};
-  if(hub&&svg){hubC=hub.querySelector('.hb-c');
-    [].forEach.call(hub.querySelectorAll('.hb-p li'),function(li,n){var p=li.querySelector('.pl'),d=+li.style.getPropertyValue('--d');
-      var b=document.createElementNS(NS,'line'),f=document.createElementNS(NS,'line');
-      b.setAttribute('class','b');b.setAttribute('pathLength','1');b.style.setProperty('--n',d);f.setAttribute('class','f');f.style.setProperty('--n',d);
-      svg.appendChild(b);svg.appendChild(f);
-      var o={li:li,p:p,b:b,f:f,x:0,y:0,on:false};pills.push(o);
-      p.addEventListener('pointerenter',function(){o.hv=true});p.addEventListener('pointerleave',function(){o.hv=false})});
-    hub.addEventListener('pointermove',function(e){ptr.x=e.clientX;ptr.y=e.clientY;ptr.in=true});
-    hub.addEventListener('pointerleave',function(){ptr.in=false})}
-  function hubTick(){hraf=0;if(!hubOn||!hub)return;
-    var hr=hub.getBoundingClientRect(),cr=hubC.getBoundingClientRect(),W=hr.width,H=hr.height;
-    svg.setAttribute('viewBox','0 0 '+W.toFixed(1)+' '+H.toFixed(1));
-    var cx=cr.left+cr.width/2-hr.left,cy=cr.top+cr.height/2-hr.top;
-    pills.forEach(function(o){var r=o.p.getBoundingClientRect(),px=r.left+r.width/2,py=r.top+r.height/2,hx=px-o.x,hy=py-o.y,tx=0,ty=0,near=false;
-      if(ptr.in&&!rm){var dx=ptr.x-hx,dy=ptr.y-hy,dist=Math.hypot(dx,dy);if(dist<170){var k=(1-dist/170)*.34;tx=dx*k;ty=dy*k}near=dist<64||o.hv}
-      o.x+=(tx-o.x)*.14;o.y+=(ty-o.y)*.14;o.p.style.setProperty('--mx',o.x.toFixed(2)+'px');o.p.style.setProperty('--my',o.y.toFixed(2)+'px');
-      if(near!==o.on){o.on=near;o.p.classList.toggle('on',near);o.b.classList.toggle('act',near);o.f.classList.toggle('act',near)}
-      var X=px-hr.left,Y=py-hr.top;
-      [o.b,o.f].forEach(function(l){l.setAttribute('x1',cx.toFixed(1));l.setAttribute('y1',cy.toFixed(1));l.setAttribute('x2',X.toFixed(1));l.setAttribute('y2',Y.toFixed(1))})});
-    hraf=requestAnimationFrame(hubTick)}
-  function hubRun(on){hubOn=on;if(on&&!hraf)hraf=requestAnimationFrame(hubTick)}
+  var fan=document.getElementById('fan');
 
   /* 슬라이드 3: 정산 금액 카운트업 */
   function countUp(){[].forEach.call(S[2].querySelectorAll('[data-cu]'),function(el){var to=+el.getAttribute('data-cu');
@@ -91,10 +58,10 @@
 
   function go(n){var p=S[i],k=(n+S.length)%S.length;if(S[k]===p)return;i=k;
     p.classList.remove('on');p.classList.add('out');p.setAttribute('inert','');p.setAttribute('aria-hidden','true');
-    setTimeout(function(){p.classList.remove('out');if(i!==1)hubRun(false)},1000);
+    setTimeout(function(){p.classList.remove('out')},1000);
     var c=S[i];c.classList.remove('out');c.classList.add('on');c.removeAttribute('inert');c.setAttribute('aria-hidden','false');
     L.textContent=c.getAttribute('data-lb');L.classList.remove('sw');void L.offsetWidth;L.classList.add('sw');
-    if(i===1)hubRun(true);if(i===2)countUp();plan()}
+    if(i===2)countUp();plan()}
   function plan(){clearTimeout(tm);if(hold||document.hidden)return;tm=setTimeout(function(){go(i+1)},DUR)}
 
   /* 읽는 중(텍스트 위·키보드 포커스)에는 멈춤, 모바일은 좌우 스와이프 */
