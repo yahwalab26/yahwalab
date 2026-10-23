@@ -352,6 +352,8 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
 @media (max-width:760px){
   .hs-s{grid-template-columns:minmax(0,1fr);align-items:start;gap:34px}
   .hs-v{display:none}.hs-t .hs-nt{display:none!important}
+  .hs-s .row>div:has(>.btn:only-child){justify-content:flex-end}
+  .hs-s .row>div>.btn:only-child{flex:0 0 calc(50% - 4px)}
   .fan{max-width:340px;margin:0 auto}
   .kt{--u:.5}.kl li span{font-size:clamp(28px,9vw,40px)}
   .dev{height:360px}.pw{width:min(290px,100%)}
