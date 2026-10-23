@@ -200,7 +200,7 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
 .hs-nt{font-size:12px;color:var(--g);margin:12px 0 0;align-self:flex-start}.hero .row p .hs-nt{display:block}
 
 /* slide 1 · cover fan */
-.fan{position:relative;width:100%;max-width:520px;aspect-ratio:1/1.04;margin-left:auto;--px:0;--py:0}
+.fan{position:relative;width:100%;max-width:520px;aspect-ratio:1/.95;margin-left:auto;--px:0;--py:0}
 .fan .slash{position:absolute;left:2%;bottom:0;width:13px;height:92%;background:var(--acc);border-radius:2px;transform-origin:50% 100%;rotate:20deg;scale:1 0}
 .rd .hs-s.on .fan .slash,.rd .hs-s.out .fan .slash{animation:slash 1.3s var(--e) .55s forwards}
 @keyframes slash{to{scale:1 1}}
@@ -209,35 +209,36 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
 .rd .hs-s.on .fi,.rd .hs-s.out .fi{animation:fcIn 1.3s var(--spring) both,flt 6.4s ease-in-out infinite;animation-delay:calc(.8s + var(--n)*.12s),calc(var(--n)*-1.4s)}
 @keyframes fcIn{from{opacity:0;translate:0 130%;rotate:-16deg;scale:.84}35%{opacity:1}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
 @keyframes flt{50%{transform:translateY(-9px)}}
-.fi img{display:block;width:100%;height:auto;border-radius:3px;box-shadow:0 34px 46px -26px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.14);transition:transform .7s var(--eo)}
-.fc:hover{z-index:9}.fc:hover .fi img{transform:translateY(-16px) scale(1.05)}
+.fc.c-t{left:3%;bottom:35%;width:44%}.fc.c-y{right:0;bottom:5%;width:74%}
+.lc{position:relative;overflow:hidden;display:grid;place-items:center;background:#fff;border:1px solid var(--ink);border-radius:20px;box-shadow:0 34px 46px -26px rgba(0,0,0,.45);transition:transform .8s var(--eo)}
+.c-t .lc{aspect-ratio:1/1.08;padding:14%}.c-y .lc{aspect-ratio:2.5/1;padding:5% 7%}
+.lc img{display:block;width:100%;height:auto}
+.lc::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(232,178,58,.3) 50%,transparent 62%);translate:-130% 0;transition:translate 1s var(--e)}
+.fc:hover{z-index:9}.fc:hover .lc{transform:translateY(-14px) rotate(-1.5deg) scale(1.03)}.fc:hover .lc::after{translate:130% 0}
+.orb{position:absolute;left:25%;top:38%;border-radius:50%;border:1px dashed #b9b5ad;translate:-50% -50%;opacity:0}
+.orb.o1{width:54%;aspect-ratio:1}.orb.o2{width:78%;aspect-ratio:1;border-color:var(--hl)}
+.rd .hs-s.on .orb,.rd .hs-s.out .orb{animation:orbIn 1.2s var(--eo) .6s forwards,spin 40s linear infinite}
+.rd .hs-s.on .o2,.rd .hs-s.out .o2{animation-direction:normal,reverse;animation-duration:1.2s,60s}
+@keyframes orbIn{from{opacity:0;scale:.6}to{opacity:1;scale:1}}@keyframes spin{to{rotate:360deg}}
 
-/* slide 2 · platform hub */
-.hub{position:relative;width:100%;max-width:540px;aspect-ratio:1/.96;margin-left:auto}
-.hb-l{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.hb-l line{fill:none}
-.hb-l .b{stroke:var(--hl);stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1}
-.hb-l .f{stroke:var(--ink);stroke-width:1.4;stroke-dasharray:2 9;stroke-linecap:round;opacity:0}
-.hb-l .f.act{opacity:1!important}.hb-l .b.act{stroke:var(--ink)}
-.rd .hs-s.on .hb-l .b,.rd .hs-s.out .hb-l .b{animation:lnDraw 1s var(--e) both;animation-delay:calc(1s + var(--n)*.1s)}
-.rd .hs-s.on .hb-l .f,.rd .hs-s.out .hb-l .f{animation:fIn .6s ease both,dash 1.2s linear infinite;animation-delay:calc(2s + var(--n)*.08s),0s}
-@keyframes lnDraw{to{stroke-dashoffset:0}}@keyframes fIn{to{opacity:.4}}@keyframes dash{to{stroke-dashoffset:-22}}
-.hb-p{list-style:none;margin:0;padding:0}
-.hb-p li{position:absolute;left:calc(var(--x)*1%);top:calc(var(--y)*1%);transform:translate(-50%,-50%);z-index:2}
-.hb-p .fl{display:block;opacity:0;scale:.3}
-.rd .hs-s.on .hb-p .fl,.rd .hs-s.out .hb-p .fl{animation:pop .95s var(--spring) both,bob 5.2s ease-in-out infinite;animation-delay:calc(.65s + var(--d)*.13s),calc(var(--d)*-1.2s)}
-@keyframes pop{from{opacity:0;scale:.3}40%{opacity:1}to{opacity:1;scale:1}}@keyframes bob{50%{translate:0 -7px}}
-.pl{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 22px 11px;background:#fff;border:1px solid var(--ink);border-radius:999px;white-space:nowrap;cursor:default;transform:translate(var(--mx,0px),var(--my,0px));transition:background .4s var(--e),color .4s var(--e),box-shadow .4s var(--e);box-shadow:0 12px 26px -16px rgba(0,0,0,.4)}
-.pl em{font-style:normal;font-size:9px;letter-spacing:.22em;color:var(--g);font-weight:700;transition:color .4s}
-.pl b{font-size:clamp(15px,1.7vw,19px);letter-spacing:-.03em;line-height:1.25}
-.pl.on{background:var(--ink);color:#fff;box-shadow:0 18px 30px -14px rgba(0,0,0,.55)}.pl.on em{color:#c9c5be}
-.hb-c{position:absolute;left:50%;top:50%;width:27%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:#fff;border:1px solid var(--ink);display:grid;place-items:center;z-index:3;box-shadow:0 20px 44px -22px rgba(0,0,0,.5);opacity:0;scale:.4}
-.rd .hs-s.on .hb-c,.rd .hs-s.out .hb-c{animation:hubIn 1s var(--spring) .45s both}
-@keyframes hubIn{to{opacity:1;scale:1}}
-.hb-c img{width:66%;height:auto;display:block;position:relative;z-index:2}
-.hb-c i{position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--acc);opacity:0}
-.rd .hs-s.on .hb-c i{animation:ring 3.2s var(--eo) 1.6s infinite}.hb-c i:nth-child(2){animation-delay:2.8s!important}
-@keyframes ring{0%{scale:1;opacity:.95}100%{scale:1.95;opacity:0}}
+/* slide 2 · kinetic platform list */
+.kt{--u:1;align-items:stretch;justify-content:flex-end}
+.kl{list-style:none;margin:0;padding:0;width:100%;position:relative}
+.kl li{position:relative;padding:clamp(10px,1.6vh,16px) 0 clamp(8px,1.4vh,14px);border-top:1px solid var(--ink);transition:opacity .4s var(--e)}
+.kl li:last-child{border-bottom:1px solid var(--ink)}
+.kl li span{display:block;font-size:clamp(30px,4.2vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.15;transform-origin:0 60%;transition:translate .6s var(--eo)}
+.kl li::before{content:"";position:absolute;left:0;top:50%;width:7px;height:.9em;background:var(--acc);transform:translateY(-50%) skewX(-20deg) scaleY(0);transition:transform .5s var(--eo);font-size:clamp(30px,4.2vw,56px)}
+.kl:hover li:not(:hover){opacity:.25}
+.kl li:hover span{translate:24px 0}.kl li:hover::before{transform:translateY(-50%) skewX(-20deg) scaleY(1)}
+.rd .hs-s.on .kl li,.rd .hs-s.out .kl li{animation:kLine .01s linear backwards;animation-delay:0s}
+.rd .hs-s.on .kl li span,.rd .hs-s.out .kl li span{animation:kIn 2s cubic-bezier(.22,1,.36,1) backwards;animation-delay:calc(.75s + var(--i)*.14s)}
+@keyframes kIn{
+ 0%{opacity:0;translate:calc(var(--ax)*var(--u)) calc(var(--ay)*var(--u));scale:var(--ss);rotate:var(--sr)}
+ 22%{opacity:1}
+ 52%{translate:calc(var(--ax)*var(--u)*-.35) calc(var(--ay)*var(--u)*-.3);scale:calc(2.1 - var(--ss)*.35);rotate:calc(var(--sr)*-.5)}
+ 78%{translate:calc(var(--ax)*var(--u)*.06) calc(var(--ay)*var(--u)*.08);scale:1.07;rotate:calc(var(--sr)*.08)}
+ 100%{opacity:1;translate:0 0;scale:1;rotate:0deg}}
+@keyframes kLine{from{opacity:1}}
 
 /* slide 3 · device mock */
 .pw{position:relative;width:min(300px,100%);margin:0 auto;--rx:0;--ry:0}
@@ -308,8 +309,7 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
   .hs-s{grid-template-columns:minmax(0,1fr);align-items:start;gap:34px}
   .hs-v{align-items:center}.hs-nt{align-self:flex-start}
   .fan{max-width:340px;margin:0 auto}
-  .hub{max-width:420px;margin:0 auto}
-  .pl{padding:9px 14px}.pl b{font-size:14px}.pl em{font-size:8px;letter-spacing:.16em}
+  .kt{--u:.5}.kl li span{font-size:clamp(28px,9vw,40px)}
   .dev{height:360px}.pw{width:min(290px,100%)}
   .c1{left:-6%;top:30%}.c2{right:-6%;top:62%}
   .chip{padding:8px 11px}.chip b{font-size:12px}
@@ -317,10 +317,10 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
 
 /* reduced motion: 정지 상태로 모두 표시 */
 @media (prefers-reduced-motion:reduce){
-  .mq-t,.fi,.fc,.hb-p .fl,.hb-c i,.hb-l .f,.dvf,.chip,.hs-s.on .ln>span{animation:none!important}
+  .mq-t,.fi,.fc,.orb,.dvf,.chip,.kl li span,.hs-s.on .ln>span{animation:none!important}
   .ln>span{transform:none!important}.rw>*{opacity:1!important;translate:none!important}
-  .fi,.hb-p .fl,.hb-c,.chip,.dev{opacity:1!important;translate:none!important;scale:none!important;rotate:none!important}
-  .fan .slash,.cols s{scale:1 1!important}.hb-l .b{stroke-dashoffset:0!important}.hb-l .f{opacity:.4!important}.cols .hi s i{opacity:1!important}
+  .fi,.orb,.chip,.dev{opacity:1!important;translate:none!important;scale:none!important;rotate:none!important}
+  .fan .slash,.cols s{scale:1 1!important}.cols .hi s i{opacity:1!important}
   .js .sh,.js .wk,.js .sub>*,.js .rows>div,.js footer .wrap{opacity:1!important;translate:none!important}.js .wk .cvi{clip-path:none!important;scale:1!important}.js .sub .box img{scale:1!important;rotate:none!important}
   .hero .meta::after{transform:none!important}
 }
