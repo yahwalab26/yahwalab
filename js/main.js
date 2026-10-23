@@ -38,7 +38,9 @@
       rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches,DUR=rm?10000:7600;
   S.forEach(function(s,k){if(k){s.setAttribute('inert','');s.setAttribute('aria-hidden','true')}});
 
-  var fan=document.getElementById('fan');
+  var fan=document.getElementById('fan'),B=[].slice.call(h.querySelectorAll('.hs-bar button'));
+  function mark(){B.forEach(function(b,k){var on=k===i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false')})}
+  B.forEach(function(b,k){b.addEventListener('click',function(){go(k)})});
 
   /* 슬라이드 3: 정산 금액 카운트업 */
   function countUp(){[].forEach.call(S[2].querySelectorAll('[data-cu]'),function(el){var to=+el.getAttribute('data-cu');
@@ -61,7 +63,7 @@
     setTimeout(function(){p.classList.remove('out')},1000);
     var c=S[i];c.classList.remove('out');c.classList.add('on');c.removeAttribute('inert');c.setAttribute('aria-hidden','false');
     L.textContent=c.getAttribute('data-lb');L.classList.remove('sw');void L.offsetWidth;L.classList.add('sw');
-    if(i===2)countUp();plan()}
+    mark();if(i===2)countUp();plan()}
   function plan(){clearTimeout(tm);if(hold||document.hidden)return;tm=setTimeout(function(){go(i+1)},DUR)}
 
   /* 읽는 중(텍스트 위·키보드 포커스)에는 멈춤, 모바일은 좌우 스와이프 */
