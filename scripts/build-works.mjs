@@ -78,7 +78,7 @@ async function syncCovers(rows) {
 /* ---------- 3) HTML 생성 ---------- */
 const card = r => {
   const label = r.label || '야화랩';
-  return `<a class="wk" href="${esc(r.blog_url)}" target="_blank" rel="noopener"><img class="cvi" src="./assets/img/${esc(r.cover_path)}" alt="${esc(r.title)} 표지 - ${esc(r.pen_names)} 작, ${esc(r.genre)} 웹소설, ${esc(label)} 출간" width="520" height="780" loading="lazy"><div class="t"><div><h3>${esc(r.title)}</h3><p class="au">${esc(r.pen_names)}</p></div><span>${esc(r.genre)}</span></div></a>`;
+  return `<a class="wk" href="${esc(r.blog_url)}" target="_blank" rel="noopener"><img class="cvi" src="./assets/img/${esc(r.cover_path)}" alt="${esc(r.title)} 표지 - ${esc(r.pen_names)} 작, ${esc(r.genre)} 웹소설, ${esc(label)} 출간" width="520" height="780" loading="lazy" decoding="async"><div class="t"><div><h3>${esc(r.title)}</h3><p class="au">${esc(r.pen_names)}</p></div><span>${esc(r.genre)}</span></div></a>`;
 };
 const person = n => ({ '@type': 'Person', name: n });
 const listItem = (r, i) => {
