@@ -1,6 +1,37 @@
 (function(){
   document.documentElement.classList.add('js');
   var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+  /* 모달 접근성: 열 때 포커스 이동·배경 inert·Tab 가둠, 닫을 때 inert 해제·열었던 요소로 복귀 */
+  function a11yDialog(el, o) {
+    o = o || {};
+    var bg = [].concat(o.bg || ['header', 'main', 'footer']);
+    var opener = null, F = 'a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
+    function items() { return [].filter.call(el.querySelectorAll(F), function (n) { return !n.hidden && n.offsetParent !== null || n === document.activeElement; }); }
+    function setBg(on) { bg.forEach(function (s) { document.querySelectorAll(s).forEach(function (n) { on ? n.setAttribute('inert', '') : n.removeAttribute('inert'); }); }); }
+    function trap(e) {
+      if (e.key !== 'Tab') return;
+      var f = items(); if (!f.length) { e.preventDefault(); return; }
+      var a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === a || !el.contains(document.activeElement))) { e.preventDefault(); z.focus(); }
+      else if (!e.shiftKey && (document.activeElement === z || !el.contains(document.activeElement))) { e.preventDefault(); a.focus(); }
+    }
+    return {
+      open: function (from) {
+        opener = from || document.activeElement; setBg(true);
+        el.addEventListener('keydown', trap);
+        var t = (o.focus && el.querySelector(o.focus)) || items()[0] || el;
+        if (t === el && !el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+        t.focus();
+      },
+      close: function () {
+        el.removeEventListener('keydown', trap); setBg(false);
+        if (opener && opener.focus) opener.focus(); opener = null;
+      }
+    };
+  }
+  window.ywDlg=a11yDialog;
+  var mdA=a11yDialog($('#md'),{focus:'.x',bg:['.skip','header','main','footer']});
+  function closeMd(){var m=$('#md');if(m&&m.classList.contains('on')){m.classList.remove('on');mdA.close()}}
   /* 문의 버튼·이메일 복사·출간작 클릭 익명 집계: 날짜·이벤트·페이지(출간작은 제목)만 보냄. 개인정보·IP·쿠키 없음, 실패해도 화면 동작에는 영향 없음.
      본인 방문 제외: 정산 사이트에 관리자로 로그인한 브라우저는 자동 제외(쿠키 yw_nt), 예비로 주소 끝에 ?notrack 을 붙여 접속해도 제외 */
   var TK={u:'https://wddixxdrndgvjgicwunu.supabase.co',k:'sb_publishable_fIrxIqOmX_-BFpSELdmvXQ_kkYSkaCx'};
@@ -22,10 +53,10 @@
    '<ul><li>로맨스 / 로맨스 판타지 / BL / GL</li><li>현재 공백 미포함 1만 자 이상의 19금 초단편 및 10만 자 안팎의 단편 작품만 투고를 받고 있습니다.</li><li><b>투고 양식</b> — 완결고와 자유 양식의 시놉시스</li><li>BL의 경우 트루비 레이블로 출간됩니다.</li><li>투고 결과는 합격 유무 관계없이 회신드립니다.</li></ul><p class="cl">짧지만 선명한 이야기부터 오래도록 기억에 남는 작품까지.<br>작가님의 이야기를 독자에게 전하기 위해 좋은 작품을 기다립니다.</p>'],
    make:['Contact','제작 문의','<p class="cl" style="border:0;padding:0">문의 내용은 아래 이메일로 보내주세요.</p>']};
   document.addEventListener('click',function(e){var t=e.target.closest('[data-m]');
-    if(t){e.preventDefault();var c=C[t.dataset.m];$('#mE').textContent=c[0];$('#mT').textContent=c[1];$('#mB').innerHTML=c[2];$('#md').classList.add('on');track(t.dataset.m==='make'&&t.classList.contains('l')?'make_imprint':t.dataset.m)}
-    else if(e.target.id==='md'||e.target.closest('.x'))$('#md').classList.remove('on')});
+    if(t){e.preventDefault();var c=C[t.dataset.m];$('#mE').textContent=c[0];$('#mT').textContent=c[1];$('#mB').innerHTML=c[2];$('#md').classList.add('on');mdA.open(t);track(t.dataset.m==='make'&&t.classList.contains('l')?'make_imprint':t.dataset.m)}
+    else if(e.target.id==='md'||e.target.closest('.x'))closeMd()});
   document.addEventListener('click',function(e){var w=e.target.closest('a.wk');if(w){var h=w.querySelector('h3');track('work_click',h?h.textContent:'')}});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')$('#md').classList.remove('on')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMd()});
   if($('#cp'))$('#cp').addEventListener('click',function(){var b=this,v=$('#addr').textContent;track('email_copy');
     function ok(){b.textContent='복사되었습니다 ✓';setTimeout(function(){b.textContent='이메일 복사'},1800)}
     function fb(){var r=document.createRange();r.selectNode($('#addr'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(x){b.textContent='직접 선택해 복사해 주세요'}}
@@ -39,8 +70,9 @@
   S.forEach(function(s,k){if(k){s.setAttribute('inert','');s.setAttribute('aria-hidden','true')}});
 
   var fan=document.getElementById('fan'),B=[].slice.call(h.querySelectorAll('.hs-bar button'));
-  function mark(){B.forEach(function(b,k){var on=k===i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false')})}
-  B.forEach(function(b,k){b.addEventListener('click',function(){go(k)})});
+  function mark(){B.forEach(function(b,k){var on=k===i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1})}
+  B.forEach(function(b,k){b.addEventListener('click',function(){go(k)});
+    b.addEventListener('keydown',function(e){var n={ArrowRight:k+1,ArrowLeft:k-1,Home:0,End:B.length-1}[e.key];if(n===undefined)return;e.preventDefault();n=(n+B.length)%B.length;go(n);B[n].focus()})});
 
   /* 슬라이드 3: 정산 금액 카운트업 */
   function countUp(){[].forEach.call(S[2].querySelectorAll('[data-cu]'),function(el){var to=+el.getAttribute('data-cu');
