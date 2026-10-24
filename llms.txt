@@ -3,9 +3,9 @@
 > 야화랩은 BL을 중심으로 로맨스·로맨스 판타지·GL 웹소설을 기획·편집·출간하는 여성향 웹소설 전문 콘텐츠 레이블입니다. BL 작품은 서브레이블 트루비(TRUE B)로 출간됩니다.
 
 ## 기본 정보
-- 공식 사이트: https://yahwalab.xyz/
-- 공식 블로그: https://blog.naver.com/yahwalab
-- 공식 X(트위터): https://x.com/yahwalab
+- 공식 사이트: [야화랩](https://yahwalab.xyz/)
+- 공식 블로그: [야화랩 블로그](https://blog.naver.com/yahwalab)
+- 공식 X(트위터): [@yahwalab](https://x.com/yahwalab)
 - 투고 문의: sample@yahwalab.xyz
 - 일반 문의: sample@yahwalab.xyz
 
