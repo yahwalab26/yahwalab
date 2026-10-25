@@ -308,7 +308,7 @@ footer .fn{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:1
 .sr{align-items:stretch;justify-content:flex-end}
 .sr-st{position:relative;width:100%;max-width:520px;aspect-ratio:1/.95;margin-left:auto;display:grid;place-items:center}
 .sr-st>*{grid-area:1/1}
-.sr-st em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--gt);align-self:start;justify-self:start}
+.sr-st em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--gt);align-self:start;justify-self:center}
 .sr-st b{display:flex;flex-direction:column;align-items:center;gap:14px;font-size:clamp(44px,6.2vw,84px);font-weight:800;letter-spacing:-.045em;line-height:1.1;opacity:0}
 .sr-st b small{font-size:12px;letter-spacing:.18em;color:var(--gt)}
 .rd .hs-s.on .sr-st b{animation:srW .95s var(--eo) var(--d) both}
