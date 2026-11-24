@@ -90,10 +90,35 @@
   if(!rm){h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;if(!praf)praf=requestAnimationFrame(pTick)});
     h.addEventListener('pointerleave',function(){tx=ty=0;if(!praf)praf=requestAnimationFrame(pTick)})}
 
+  /* 슬라이드 2: 유통처 단어 순서 무작위 + 녹아 이어지는(goo morph 근사) 전환
+     블러+임계값 SVG 필터(#srgoo) 위에서 두 단어를 스프링(280 22, tokens --spring-settle)으로 교차. */
+  var srLast='',srRaf=0;
+  function srShuffle(){var li=[].slice.call(h.querySelectorAll('.sr-l li'));if(!li.length)return;
+    var n=li.map(function(el){return el.textContent}),k,j,t;
+    do{for(k=n.length-1;k>0;k--){j=Math.floor(Math.random()*(k+1));t=n[k];n[k]=n[j];n[j]=t}}while(n[0]===srLast&&n.length>1);
+    srLast=n[0];li.forEach(function(el,q){el.textContent=n[q]})}
+  function srStop(){cancelAnimationFrame(srRaf);srRaf=0}
+  function srRun(){srStop();var gw=h.querySelector('.sr-gw');if(rm||!gw)return;
+    var A=gw.querySelector('.a'),B=gw.querySelector('.b'),N=gw.querySelector('small'),
+        W=[].map.call(h.querySelectorAll('.sr-l li'),function(l){return l.textContent}),
+        K=280,C=22,BL=10,p=1,v=0,t=0,k=-1,last=0;
+    A.textContent=B.textContent=N.textContent='';A.style.opacity=B.style.opacity='0';
+    function T(i){return .4+.65*i}
+    function fx(el,f){el.style.filter='blur('+Math.min(BL/f-BL,100).toFixed(1)+'px)';el.style.opacity=Math.pow(f,.4).toFixed(3)}
+    function frame(now){if(!last)last=now;var dt=Math.min((now-last)/1000,1/30);last=now;t+=dt;
+      while(k<W.length&&t>=T(k+1)){k++;A.textContent=B.textContent;B.textContent=k<W.length?W[k]:'';
+        N.textContent=k<W.length?('0'+(k+1)).slice(-2)+' / 0'+W.length:'';p=0;v=0}
+      for(var s=0;s<4;s++){v+=(-K*(p-1)-C*v)*dt/4;p+=v*dt/4}
+      var f=Math.max(.0001,Math.min(1,p)),g=Math.max(.0001,1-f);
+      fx(B,f);fx(A,g);N.style.opacity=Math.pow(k<W.length?f:g,.4).toFixed(3);
+      if(k<W.length||Math.abs(p-1)>.002||Math.abs(v)>.01)srRaf=requestAnimationFrame(frame);
+      else{A.style.opacity=B.style.opacity=N.style.opacity='0';srRaf=0}}
+    srRaf=requestAnimationFrame(frame)}
+
   function go(n){var p=S[i],k=(n+S.length)%S.length;if(S[k]===p)return;i=k;
     p.classList.remove('on');p.classList.add('out');p.setAttribute('inert','');p.setAttribute('aria-hidden','true');
     setTimeout(function(){p.classList.remove('out')},1000);
-    var c=S[i];c.classList.remove('out');c.classList.add('on');c.removeAttribute('inert');c.setAttribute('aria-hidden','false');
+    var c=S[i];if(p===S[1])srStop();if(c===S[1]){srShuffle();srRun()}c.classList.remove('out');c.classList.add('on');c.removeAttribute('inert');c.setAttribute('aria-hidden','false');
     L.textContent=c.getAttribute('data-lb');L.classList.remove('sw');void L.offsetWidth;L.classList.add('sw');
     mark();if(i===2)countUp();plan()}
   function plan(){clearTimeout(tm);if(hold||document.hidden)return;tm=setTimeout(function(){go(i+1)},DUR)}
