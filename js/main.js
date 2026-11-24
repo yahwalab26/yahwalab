@@ -82,10 +82,9 @@
     requestAnimationFrame(step)})}
 
   /* 포인터 패럴랙스(표지 팬·기기 목업 기울기) */
-  var pw=document.getElementById('pw'),mx=0,my=0,tx=0,ty=0,praf=0;
+  var mx=0,my=0,tx=0,ty=0,praf=0;
   function pTick(){praf=0;mx+=(tx-mx)*.09;my+=(ty-my)*.09;
     if(fan){fan.style.setProperty('--px',mx.toFixed(3));fan.style.setProperty('--py',my.toFixed(3))}
-    if(pw){pw.style.setProperty('--ry',mx.toFixed(3));pw.style.setProperty('--rx',my.toFixed(3))}
     if(Math.abs(tx-mx)>.003||Math.abs(ty-my)>.003)praf=requestAnimationFrame(pTick)}
   if(!rm){h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;if(!praf)praf=requestAnimationFrame(pTick)});
     h.addEventListener('pointerleave',function(){tx=ty=0;if(!praf)praf=requestAnimationFrame(pTick)})}
