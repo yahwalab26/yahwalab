@@ -90,17 +90,10 @@
   if(!rm){h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;if(!praf)praf=requestAnimationFrame(pTick)});
     h.addEventListener('pointerleave',function(){tx=ty=0;if(!praf)praf=requestAnimationFrame(pTick)})}
 
-  /* 슬라이드 2: 유통처 단어를 슬라이드 1과 같은 모션(pnW)으로 한 곳씩, 순서는 매번 무작위. 마지막 목록은 가나다순 고정 */
-  var srLast='';
-  function srShuffle(){var b=[].slice.call(h.querySelectorAll('.sr-rg b'));if(!b.length)return;
-    var n=b.map(function(el){return el.textContent}),k,j,t;
-    do{for(k=n.length-1;k>0;k--){j=Math.floor(Math.random()*(k+1));t=n[k];n[k]=n[j];n[j]=t}}while(n[0]===srLast&&n.length>1);
-    srLast=n[0];b.forEach(function(el,q){el.textContent=n[q]})}
-
   function go(n){var p=S[i],k=(n+S.length)%S.length;if(S[k]===p)return;i=k;
     p.classList.remove('on');p.classList.add('out');p.setAttribute('inert','');p.setAttribute('aria-hidden','true');
     setTimeout(function(){p.classList.remove('out')},1000);
-    var c=S[i];if(c===S[1])srShuffle();c.classList.remove('out');c.classList.add('on');c.removeAttribute('inert');c.setAttribute('aria-hidden','false');
+    var c=S[i];c.classList.remove('out');c.classList.add('on');c.removeAttribute('inert');c.setAttribute('aria-hidden','false');
     L.textContent=c.getAttribute('data-lb');L.classList.remove('sw');void L.offsetWidth;L.classList.add('sw');
     mark();if(i===2)countUp();plan()}
   function plan(){clearTimeout(tm);if(hold||document.hidden)return;tm=setTimeout(function(){go(i+1)},DUR)}
